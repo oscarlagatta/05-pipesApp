@@ -1,0 +1,83 @@
+<p-panel class="p-1" header="Basic Pipes">
+  <p>
+    Default pipes in Angular
+  </p>
+</p-panel>
+<div class="grid">
+  <div class="col-12 md:col-6">
+    <p-fieldset [toggleable]="true" legend="i18nSelect Pipe">
+      <p>
+        Greetings {{ name }},
+        would like to {{gender | i18nSelect: invitationMap}} you to our event
+      </p>
+
+      <p-button
+        (click)="changeClient()"
+        label="Change person">
+
+      </p-button>
+    </p-fieldset>
+  </div>
+  <div class="col-12 md:col-6">
+    <p-fieldset [toggleable]="true" legend="i18nPlural Pipe">
+
+      <p>Actualmente {{clients.length | i18nPlural: clientsMap}}
+
+      </p>
+
+      <p-button
+        (click)="deleteClient()"
+        label="Delete Client"
+
+      ></p-button>
+    </p-fieldset>
+  </div>
+  <div class="col-12 md:col-6">
+    <p-fieldset [toggleable]="true" legend="Slice Pipe">
+      <b>Original</b>
+      <pre>{{clients }}</pre>
+      <b>Slice 0:2</b>
+      <pre>{{clients | slice: 0:2}}</pre>
+
+      <b>Slice 1:2</b>
+      <pre>{{clients | slice: 1:2}}</pre>
+
+      <b>Slice 1:3</b>
+      <pre>{{clients | slice: 1:3}}</pre>
+
+      <b>Slice 3:4</b>
+      <pre>{{clients | slice: 3:4}}</pre>
+
+      <b>Slice 0:-3</b>
+      <pre>{{clients | slice: 0:-3}}</pre>
+    </p-fieldset>
+  </div>
+  <div class="col-12 md:col-6">
+    <p-fieldset [toggleable]="true" legend="Json Pipe">
+          <pre>
+            {{ person | json }}
+          </pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset [toggleable]="true" legend="KeyValue Pipe">
+      <ul>
+        <li *ngFor="let item of person | keyvalue">
+          <b>{{item.key | titlecase}}: </b> {{ item.value }}
+        </li>
+      </ul>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset [toggleable]="true" legend="Async Pipe">
+
+      <pre *ngIf="!(myObservableTimer | async)">Resolving Observable</pre>
+      <pre>{{myObservableTimer | async }}</pre>
+
+      <pre *ngIf="!(promiseValue | async)">Resolving Promise</pre>
+      <pre>{{promiseValue | async }}</pre>
+    </p-fieldset>
+  </div>
+</div>
